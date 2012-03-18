@@ -1,11 +1,5 @@
 syntax on
 
-if has('autcmd')
-  filetype plugin indent on
-  au BufRead,BufNewFile *.js,*.rb,*.rhtml set shiftwidth=2
-  au BufRead,BufNewFile *.js,*.rb,*.rhtml set softtabstop=2
-endif
-
 set nocompatible
 set ruler
 set bg=dark
@@ -38,6 +32,12 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=8
 set smarttab
+
+if has('autocmd')
+  filetype plugin indent on
+  au BufRead,BufNewFile *.js,*.rb,*.rhtml set shiftwidth=2
+  au BufRead,BufNewFile *.js,*.rb,*.rhtml set softtabstop=2
+endif
 
 call pathogen#infect()
 
