@@ -15,6 +15,8 @@ set nowrap
 set wildmenu
 set noerrorbells
 set foldenable
+set cursorline
+set colorcolumn=80
 
 set showcmd
 set showmatch
