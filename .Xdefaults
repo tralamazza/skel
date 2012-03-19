@@ -11,6 +11,10 @@ Xft.rgba: rgb
 Xft.hinting: true
 Xft.hintstyle: hintslight
 
+! URxvt settings
+URxvt.transparent: false
+URxvt.fading: 0
+
 ! Perl extensions
 URxvt.perl-ext-common: default,matcher
 URxvt.matcher.button: 1
@@ -25,6 +29,9 @@ URxvt.cursorBlink: true
 URxvt.cursorColor: #657b83
 URxvt.cursorUnderline: false
 
+! Pointer
+URxvt.pointerBlank: true
+
 ! URxvt
 URxvt.allow_bold: false
 URxvt*font: xft:Monospace:pixelsize=14
@@ -34,7 +41,7 @@ URxvt*letterSpace: -1
 
 *background: #002b36
 *foreground: #657b83
-*fading: 40
+!*fading: 40
 *fadeColor: #002b36
 *cursorColor: #93a1a1
 *pointerColorBackground: #586e75
