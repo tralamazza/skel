@@ -1,0 +1,6 @@
+termcapinfo xterm*|rxvt ti@:te@
+
+altscreen on
+
+vbell off
+startup_message off
