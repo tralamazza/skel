@@ -16,6 +16,7 @@ set wildmenu
 set noerrorbells
 set foldenable
 set cursorline
+set cursorcolumn
 set colorcolumn=80
 
 set showcmd
@@ -37,8 +38,8 @@ set smarttab
 
 if has('autocmd')
   filetype plugin indent on
-  au BufRead,BufNewFile *.js,*.rb,*.rhtml set shiftwidth=2
-  au BufRead,BufNewFile *.js,*.rb,*.rhtml set softtabstop=2
+  au BufRead,BufNewFile *.jade,*.js,*.rb,*.rhtml set shiftwidth=2
+  au BufRead,BufNewFile *.jade,*.js,*.rb,*.rhtml set softtabstop=2
 endif
 
 call pathogen#infect()
