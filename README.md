@@ -15,3 +15,7 @@ submodules
 
     git submodule init
     git submodule update
+
+load `.exports`
+
+    echo '. "$HOME/.exports"' >> .profile
