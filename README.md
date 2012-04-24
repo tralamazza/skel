@@ -16,6 +16,15 @@ submodules
     git submodule init
     git submodule update
 
+submodules (update)
+
+    git submodule foreach 'git checkout master'
+    git submodule foreach 'git pull'
+
 load `.exports`
 
     echo '. "$HOME/.exports"' >> .profile
+
+load `.git_bashrc`
+
+    echo '. "$HOME/.git_bashrc"' >> .bashrc
