@@ -9,6 +9,7 @@ import System.IO
 startup :: X ()
 startup = do
 --    spawn "xloadimage -onroot ~/Pictures/stripes1680x1050.png"
+    spawn "xsetroot -solid midnightblue"
     spawn "xsetroot -cursor_name left_ptr"
 
 main = do
@@ -23,5 +24,6 @@ main = do
             }
         , borderWidth = 2
         , terminal = "urxvt"
+        , focusFollowsMouse = False
 --        , modMask = mod4Mask
         }
