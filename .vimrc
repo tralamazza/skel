@@ -8,9 +8,14 @@ set bg=dark
 set mouse=a
 set number
 
+let g:syntastic_check_on_open=1
+
 if has('statusline')
   set laststatus=2  " always show
   set statusline=%<\ %n:%f\ %m%r%y\ %{fugitive#statusline()}%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
 endif
 
 set nowrap
