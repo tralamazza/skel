@@ -4,7 +4,7 @@ function _git_prompt() {
     local status="`git status --porcelain 2>&1`"
     if ! [[ "$status" =~ Not\ a\ git\ repo ]]; then
         local ansi=47
-        if [[ "$status" =~ ^M ]]; then # to be committed
+        if [[ "$status" =~ ^M ]] || [[ "$status" =~ ^A ]]; then # to be committed
             ansi=42
         elif [[ "$status" =~ ^[[:space:]]M ]]; then # not staged for commit
             ansi=41
