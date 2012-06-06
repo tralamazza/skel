@@ -9,6 +9,7 @@ function _git_prompt() {
             if (/^M /) stats[0]++;
             if (/^A /) stats[0]++;
             if (/^ M/) stats[1]++;
+            if (/^UU/) stats[1]++;
             if (/^\?\?/) stats[2]++;
             }
             END {
