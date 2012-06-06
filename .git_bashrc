@@ -2,27 +2,30 @@ DFLT_PS1=$PS1
 
 function _git_prompt() {
     local status="`git status --porcelain 2>&1`"
-    if ! [[ "$status" =~ Not\ a\ git\ repo ]]; then
-        local ansi=47
-        if [[ "$status" =~ ^M ]]; then # to be committed
-            ansi=42
-        elif [[ "$status" =~ ^[[:space:]]M ]]; then # not staged for commit
-            ansi=41
-        elif [[ "$status" =~ ^\?\? ]]; then # untracked
-            ansi=45
-        else # all clean
-            ansi=44
-        fi
 
-        local stash_count="`git stash list | wc -l`"
+    if ! [[ "$status" =~ Not\ a\ git\ repo ]]; then
+        local parsed=`echo "$status" | awk '
+            BEGIN { for (i=0; i<3; i++) stats[i]=0 } {
+            if (/^M /) stats[0]++;
+            if (/^A /) stats[0]++;
+            if (/^ M/) stats[1]++;
+            if (/^\?\?/) stats[2]++;
+            }
+            END {
+                printf("\033[0;37;32m^%s\033[0m \033[0;37;31m~%s\033[0m \033[0;37;35m+%s\033[0m", stats[0], stats[1], stats[2])
+            }'`
+
         local branch=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
 
-        echo -n '\[\e[0;37;'"$ansi"';1m\]'"$branch"'\[\e[0m\]'"|$stash_count"' '
+        local stash_count="`git stash list | wc -l`"
+
+        echo -n '\[\e[0;37;40m\]'"$branch"'\[\e[0m\]'"|$stash_count| $parsed"' '
     fi
 }
 
 function _prompt_command() {
-        PS1="`_git_prompt`"$DFLT_PS1
+    PS1="`_git_prompt`"$DFLT_PS1
 }
 
 PROMPT_COMMAND=_prompt_command
+EDITOR=vim
