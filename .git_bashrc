@@ -8,6 +8,7 @@ function _git_prompt() {
             BEGIN { for (i=0; i<3; i++) stats[i]=0 } {
             if (/^M /) stats[0]++;
             if (/^A /) stats[0]++;
+            if (/^D /) stats[0]++;
             if (/^ M/) stats[1]++;
             if (/^UU/) stats[1]++;
             if (/^\?\?/) stats[2]++;
