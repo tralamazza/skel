@@ -1,14 +1,21 @@
 syntax on
 
+set t_Co=16
+
 set nocompatible
 set ruler
 set bg=dark
 set mouse=a
 set number
 
+let g:syntastic_check_on_open=1
+
 if has('statusline')
   set laststatus=2  " always show
   set statusline=%<\ %n:%f\ %m%r%y\ %{fugitive#statusline()}%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
 endif
 
 set nowrap
@@ -31,17 +38,16 @@ set hlsearch
 set incsearch
 
 set expandtab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=8
+set shiftwidth=2
+set softtabstop=2
+set tabstop=4
 set smarttab
+
+call pathogen#infect()
 
 if has('autocmd')
   filetype plugin indent on
-  au BufRead,BufNewFile *.jade,*.js,*.rb,*.rhtml set shiftwidth=2
-  au BufRead,BufNewFile *.jade,*.js,*.rb,*.rhtml set softtabstop=2
+  au BufRead,BufNewFile *.hb.html set filetype=handlebars
 endif
-
-call pathogen#infect()
 
 colorscheme solarized
